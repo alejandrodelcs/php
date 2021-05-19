@@ -5,7 +5,7 @@
 
     echo "\nNumeros Pares\t";
 
-    for($j=1; $j<101;$j+=2){
+    for($j=2; $j<101;$j+=2){
         echo "$j - ";
     }
     
@@ -15,6 +15,7 @@
     $max = 101;
     $pos = 0;
     while($pos<$max){ //NO ES OPTIMO 
+        echo "$pos - ";
         if($pos==60){
             print_r("corte del break");
             break;

@@ -59,7 +59,7 @@ $aProductos[] = array(
                         </tr>
                         <?php $posicion = 0;
                         $contadorPrecio = 0;
-                        while ($posicion < 3) {
+                        while ($posicion < count($aProductos)) {
                         ?>
                             <tr>
                                 <td><?php echo $aProductos[$posicion]["nombre"] ?></td>
@@ -70,14 +70,12 @@ $aProductos[] = array(
                                 <td><a class="btn btn-primary" href="#" role="button">Comprar</a></td>
                             </tr>
                         <?php
-                            $contadorPrecio = $aProductos[$posicion]["precio"] + $contadorPrecio;
+                            $contadorPrecio += $aProductos[$posicion]["precio"];
                             $posicion++;
                         } ?>
                     </tbody>
                 </table>
-                <?php
-                echo " El Subtotal: $ $contadorPrecio"
-                ?>
+                <h2> El Subtotal: $ <?php echo $contadorPrecio; ?> </h2>
             </div>
     </main>
 </body>
