@@ -4,9 +4,13 @@ h1,label, p{
 
 p{
     font-size: 15px;
-    color :#C0392B;
+    color :hsl(6, 63%, 46%);
 }
 
+
+img{
+    width: 85%;
+}
 .fa-plus{
     border: 1px solid #007bff;
     border-radius: 40px;
@@ -17,4 +21,23 @@ p{
     position: fixed;
     bottom: 20px;
     right: 20px;
+}
+
+.fa-edit{
+    border: 1px solid #17a2b8;
+    border-radius: 40px;
+    font-size: 16px;
+    background-color: #17a2b8;
+    color: white;
+    padding: 11px 10px;
+}
+
+.fa-trash-alt{
+    border: 1px solid red;
+    border-radius: 40px;
+    font-size: 16px;
+    background-color: red;
+    color: white;
+    padding: 11px 12px;
+}
 }
