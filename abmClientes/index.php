@@ -14,6 +14,7 @@ if (file_exists("archivo.txt")) {
 
 $id = isset($_REQUEST["id"]) && $_REQUEST["id"] >= 0 ? $_REQUEST["id"] : "";
 
+$nuevoNombre="";
 
 if ($_POST) {
 
