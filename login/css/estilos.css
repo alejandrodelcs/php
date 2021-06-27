@@ -1,3 +1,17 @@
+#index{
+    padding-top: 300px;
+    padding-bottom: 40px;
+    background-color: #274b69;
+    color : white;
+    font-family: 'Martel Sans', sans-serif;
+}
+
+.form-group {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
 .dropdown-toggle{
     font-size: 1rem;
     font-weight: 400;

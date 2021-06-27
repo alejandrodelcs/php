@@ -1,133 +1,83 @@
 <?php
 
-include_once("header.php"); 
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+//Inicia sesion
+session_start();
+
+$claveEncriptada = password_hash("admin123", PASSWORD_DEFAULT);
+
+if ($_POST) {
+
+    $usuario = trim($_REQUEST["txtUsuario"]);
+    $clave = trim($_REQUEST["txtClave"]);
+
+    if ((password_verify($clave, $claveEncriptada)) && ($usuario == "admin")) //valida si el usuario y contraseña es válido
+    {
+        $_SESSION["usuario"] = $usuario;
+        header("location:ventas.php");
+    } else {
+        $mensaje = " Usuario y/o Contraseña no válidos. Por favor, inténtalo de nuevo."; 
+    }
+}
+
 
 ?>
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+<!DOCTYPE html>
+<html lang="es">
 
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Inicio</h1>
-            <a href="reporte.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
-          </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome/css/fontawesome.min.css">
+    <title>Login</title>
+</head>
 
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Facturación (mensual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$ 0</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<body id="index">
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1><i class="fas fa-user"></i> Iniciar Sesión</h1>
             </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Facturación (anual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$ 0</div>
+            <?php if (isset($mensaje) && $mensaje != "") : ?>
+                <div class="col-12">
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $mensaje ?>
                     </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
                 </div>
-              </div>
+            <?php endif; ?>
+            <div class="col-12">
+            <form action="" method="POST">
+                <div class="form-group text-center">
+                    <label for="txtUsuario">Usuario</label>
+                    <input type="text" id="txtUsuario" name="txtUsuario" class="form-control" value="" />
+                </div>
+                <div class="form-group text-center">
+                    <label for="txtClave">Contraseña</label>
+                    <input type="password" id="txtClave" name="txtClave" class="form-control" value=""/>
+                </div>
+                <div class="form-group custom-control custom-checkbox small">
+                    <input type="checkbox" class="custom-control-label" />
+                    <label for="customCheck">Recordarme</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Entrar</button>
+                </div>
+            </form>
             </div>
-
-
-          </div>
-
-          <!-- Content Row -->
-
-          <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Ganancia por productos</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
-        <!-- /.container-fluid -->
+    </main>
+</body>
 
-      </div>
-      <!-- End of Main Content -->
-<?php include_once("footer.php"); ?>
+</html>

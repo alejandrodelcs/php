@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 include_once 'vendor/autoload.php';
 use Mpdf;
 
-$mpdf = new new Mpdf();
+$mpdf = new Mpdf();
 $mpdf->WriteHTML('<H1>Hola mundo!</H1>');
 $mpdf->Output();
 

@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><?php echo $pg; ?></title>
+  <title>header</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -76,11 +76,11 @@
                 </button>
               </div>
             </div>
-       
+
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-     
+
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
