@@ -14,7 +14,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="ventas.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Inicio</span></a>
       </li>
@@ -36,7 +36,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="cliente-formulario.php">Nuevo cliente</a>
-            <a class="collapse-item" href="clientes.php">Listado de clientes</a>
+            <a class="collapse-item" href="cliente-listado.php">Listado de clientes</a>
           </div>
         </div>
       </li>
@@ -50,8 +50,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="producto-formulario.php">Nuevo producto</a>
-            <a class="collapse-item" href="productos.php">Listado de productos</a>
-            <a class="collapse-item" href="tipoproductos.php">Tipo de productos</a>
+            <a class="collapse-item" href="producto-listado.php">Listado de productos</a>
+            <a class="collapse-item" href="tipoproducto-listado.php">Tipo de productos</a>
           </div>
         </div>
       </li>
@@ -68,13 +68,27 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="venta-formulario.php">Nueva venta</a>
-            <a class="collapse-item" href="ventas.php">Listado de ventas</a>
+            <a class="collapse-item" href="ventas-listado.php">Listado de ventas</a>
           </div>
         </div>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsuario" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-users"></i>
+          <span>Usuarios</span>
+        </a>
+        <div id="collapseUsuario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="usuario-formulario.php">Nuevo Usuario</a>
+            <a class="collapse-item" href="usuarios-listado.php">Listado de Usuarios</a>
+          </div>
+        </div>
+      </li>
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">

@@ -6,7 +6,7 @@ include_once "config.php";
 include_once "entidades/venta.php";
 $pg = "Listado de ventas";
 
-$ventaEntidad = new Venta();
+$ventaEntidad = new Ventas();
 $aVentas = $ventaEntidad->cargarGrilla();
 
 
@@ -17,7 +17,7 @@ fputcsv($fp, $titulo, ";");
 
 foreach ($aVentas as $venta) {
 	$aDatos = array(
-		 $venta->fecha, 
+		$venta->fecha, 
 		$venta->nombre_cliente, 
 		$venta->nombre_producto,
 		$venta->cantidad,

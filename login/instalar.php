@@ -6,9 +6,9 @@ include_once "entidades/usuario.php";
 $usuario = new Usuario();
 $usuario->usuario = "admin";
 $usuario->clave = $usuario->encriptarClave("admin123");
-$usuario->nombre = "Nelson Daniel";
-$usuario->apellido = "Tarche";
-$usuario->correo = "nelson.tarche@gmail.com";
+$usuario->nombre = "";
+$usuario->apellido = "";
+$usuario->correo = "admin123@correo.com";
 $usuario->insertar();
 echo "Usuario insertado.";
 ?>

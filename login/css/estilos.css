@@ -6,7 +6,7 @@
     font-family: 'Martel Sans', sans-serif;
 }
 
-.form-group {
+#index .form-group  {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;

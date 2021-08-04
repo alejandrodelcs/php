@@ -1,0 +1,12 @@
+SELECT *
+FROM productos
+WHERE cantidad <= 10
+ORDER BY nombre ASC 
+
+
+
+SELECT nombre, correo
+FROM clientes
+WHERE MONTH(fecha_nac) = 3
+ORDER BY nombre ASC
+
