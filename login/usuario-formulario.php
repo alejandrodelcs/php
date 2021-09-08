@@ -19,9 +19,15 @@ if ($_POST) {
             $entidadUsuario->insertar();
             header("Location: usuarios-listado.php");
         }
+
+        $msg["texto"] = "Guardado correctamente";
+        $msg["codigo"] = "alert-success";
+
     } else if (isset($_POST["btnBorrar"])) {
         $entidadUsuario->eliminar();
-        header("Location: usuarios-listado.php");
+        header("Location: usuario-formulario.php");
+        $msg["texto"] = "Se ha eliminado el registro";
+        $msg["codigo"] = "alert-danger";
     }
 }
 
@@ -35,7 +41,15 @@ include_once("header.php");
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
+    <?php if (isset($msg)) : ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert <?php echo $msg["codigo"]; ?>" role="alert">
+                    <?php echo $msg["texto"]; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Usuarios</h1>
     <div class="row">
@@ -49,28 +63,28 @@ include_once("header.php");
     <div class="row">
         <div class="col-6 form-group">
             <label for="txtentidadUsuario">Usuario:</label>
-            <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" value="<?php echo $entidadUsuario->usuario ?>">
+            <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" value="<?php echo $entidadUsuario->usuario ?>" required>
         </div>
         <div class="col-6 form-group">
             <label for="txtNombre">Nombre:</label>
-            <input type="text"  class="form-control" name="txtNombre" id="txtNombre" value="<?php echo $entidadUsuario->nombre ?>">
+            <input type="text" class="form-control" name="txtNombre" id="txtNombre" value="<?php echo $entidadUsuario->nombre ?>" required>
         </div>
         <div class="col-6 form-group">
             <label for="txtApellido">Apellido:</label>
-            <input type="" class="form-control" name="txtApellido" id="txtApellido" required value="<?php echo $entidadUsuario->apellido ?>">
+            <input type="" class="form-control" name="txtApellido" id="txtApellido" required value="<?php echo $entidadUsuario->apellido ?>" required>
         </div>
         <div class="col-6 form-group">
             <label for="txtCorreo">Correo:</label>
-            <input type="text" class="form-control" name="txtCorreo" id="txtCorreo" value="<?php echo $entidadUsuario->correo ?>">
+            <input type="text" class="form-control" name="txtCorreo" id="txtCorreo" value="<?php echo $entidadUsuario->correo ?>" required>
         </div>
         <div class="col-6 form-group">
             <label for="txtClave"">Contraseña:</label>
-            <input type="password" class="form-control" name="txtClave" id="txtClave">
-            <small>Completar únicamente para cambiar la clave</small>
+            <input type="password" class="form-control" name="txtClave" id="txtClave" value="<?php echo $entidadUsuario->clave ?>" required>
+                <small>Completar únicamente para cambiar la clave</small>
         </div>
     </div>
 
 </div>
 <!-- /.container-fluid -->
-
+<?php include_once("footer.php"); ?>
 </div>

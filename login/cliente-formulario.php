@@ -20,9 +20,14 @@ if ($_POST) {
             //Es nuevo
             $cliente->insertar();
         }
+
+        $msg["texto"] = "Guardado correctamente";
+        $msg["codigo"] = "alert-success";
+
     } else if (isset($_POST["btnBorrar"])) {
         $cliente->eliminar();
-        header("Location: cliente-listado.php");
+        $msg["texto"] = "Se ha eliminado el registro";
+        $msg["codigo"] = "alert-danger";
     }
 }
 
@@ -38,6 +43,15 @@ include_once("header.php");
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
+    <?php if (isset($msg)) : ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert <?php echo $msg["codigo"]; ?>" role="alert">
+                    <?php echo $msg["texto"]; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
     <h1 class="h3 mb-4 text-gray-800">Cliente</h1>
     <div class="row">
         <div class="col-12 mb-3">
@@ -117,7 +131,7 @@ include_once("header.php");
                     <div class="col-6 form-group">
                         <label for="lstLocalidad">Localidad:</label>
                         <select class="form-control" name="lstLocalidad" id="lstLocalidad">
-                            <option value="" disabled selected>Seleccionar</option>
+                            <option value="1" disabled selected>Buenos Aires</option>
                         </select>
                     </div>
                     <div class="col-12 form-group">

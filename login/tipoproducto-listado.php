@@ -25,11 +25,11 @@ include_once("header.php");
             <th>Nombre</th>
             <th>Acciones</th>
         </tr>
-        <?php foreach ($aTipoProductos as $tipo) : ?>
+        <?php foreach ($aTipoProductos as $tipoproducto) : ?>
             <tr>
-                <td><?php echo $tipo->nombre; ?></td>
+                <td><?php echo $tipoproducto->nombre; ?></td>
                 <td style="width: 110px;">
-                    <a href="tipoproducto-formulario.php?id=<?php echo $tipo->idTipoProducto; ?>"><i class="fas fa-search"></i></a>
+                    <a href="tipoproducto-formulario.php?id=<?php echo $tipoproducto->idtipoproducto; ?>"><i class="fas fa-search"></i></a>
                 </td>
             </tr>
         <?php endforeach; ?>

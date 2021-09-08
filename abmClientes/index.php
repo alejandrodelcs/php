@@ -50,6 +50,8 @@ if ($_POST) {
             "correo" => $correo,
             "imagen" => $nuevoNombre
         );
+        
+        
 
     } else { //Es un nuevo cliente
         //Inserta un nuevo cliente
@@ -62,8 +64,10 @@ if ($_POST) {
         );
     }
 
-    $msg  = "Registro guardado con éxito";
+    header("Location: index.php");
 
+    $msg  = "Registro guardado con éxito";
+    
     //header("Location: index.php");
     //Convertir el array a json
     $jsonClientes = json_encode($aClientes);
@@ -80,6 +84,7 @@ if ($id != "" && isset($_REQUEST["do"]) && $_REQUEST["do"] == "eliminar") {
     $jsonClientes = json_encode($aClientes);
     file_put_contents("archivo.txt", $jsonClientes);
     header("Location: index.php");
+    
 }
 
 ?>

@@ -86,9 +86,9 @@ class Cliente
                 cuit = '" . $this->cuit . "',
                 telefono = '" . $this->telefono . "',
                 correo = '" . $this->correo . "',
-                fecha_nac =  '" . $this->fecha_nac . "'
-                fk_idprovincia = '". $this->fk_idprovincia ."'
-                fk_idlocalidad = '". $this->fk_idlocalidad ."'
+                fecha_nac =  '" . $this->fecha_nac . "',
+                fk_idprovincia = '". $this->fk_idprovincia ."',
+                fk_idlocalidad = '". $this->fk_idlocalidad ."',
                 domicilio = '". $this->domicilio ."'
                 WHERE idcliente = " . $this->idcliente;
 
@@ -103,7 +103,7 @@ class Cliente
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
         $sql = "DELETE FROM clientes WHERE idcliente = " . $this->idcliente;
         //Ejecuta la query
-        if (!$mysqli->query($sql)) {
+        if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
         $mysqli->close();

@@ -22,7 +22,7 @@ if ($_POST) {
         $usuarioIngresado = trim($_REQUEST["txtUsuario"]);
         $claveIngresada = trim($_REQUEST["txtClave"]);
 
-        if ($usuario->verificarClave($claveIngresada,$claveEncriptada) && ($usuarioIngresado == $usuario->usuario)) //valida si el usuario y contraseña es válido
+        if ($usuario->verificarClave($claveIngresada, $claveEncriptada) && ($usuarioIngresado == $usuario->usuario)) //valida si el usuario y contraseña es válido
         {
             $_SESSION["usuario"] = $usuario->usuario;
             header("location:ventas.php");
@@ -54,38 +54,39 @@ if ($_POST) {
 
 <body id="index">
     <main class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <?php if (isset($mensaje) && $mensaje != "") : ?>
-                    <div class="col-12">
-                        <div class="alert alert-danger" role="alert">
-                            <?php echo $mensaje ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
-                <h1><i class="fas fa-user"></i> Iniciar Sesión</h1>
-            </div>
+  
+        <div class="row col-md-12 text-center">
 
-            <div class="col-12">
 
-                <form action="" method="POST">
-                    <div class="form-group text-center">
-                        <label for="txtUsuario">Usuario</label>
-                        <input type="text" id="txtUsuario" name="txtUsuario" class="form-control" value="" />
-                    </div>
-                    <div class="form-group text-center">
-                        <label for="txtClave">Contraseña</label>
-                        <input type="password" id="txtClave" name="txtClave" class="form-control" value="" />
-                    </div>
-                    <div class="form-group custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-label" />
-                        <label for="customCheck">Recordarme</label>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-dark">Entrar</button>
-                    </div>
-                </form>
-            </div>
+            <?php if (isset($mensaje) && $mensaje != "") : ?>
+                <div class="alert alert-danger" onclick="" role="alert">
+                    <?php echo $mensaje ?>
+                </div>
+            <?php endif; ?>
+
+        
+            <form action="" method="POST">
+
+                <img class="text-center" src="files/2020081708082052.jpg" style="clip-path: circle(30% at 50% 50%);">
+                <h1><i class="fas fa-user text-center"></i> Iniciar Sesión</h1>
+
+                <div class="form-group text-center">
+                    <label for="txtUsuario">Usuario</label>
+                    <input type="text" id="txtUsuario" name="txtUsuario" class="form-control" value="" />
+                </div>
+                <div class="form-group text-center">
+                    <label for="txtClave">Contraseña</label>
+                    <input type="password" id="txtClave" name="txtClave" class="form-control" value="" />
+                </div>
+                <div class="form-group custom-control custom-checkbox small">
+                    <input type="checkbox" class="custom-control-label" />
+                    <label for="customCheck">Recordarme</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Entrar</button>
+                </div>
+            </form>
+
         </div>
     </main>
 </body>

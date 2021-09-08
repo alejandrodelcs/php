@@ -37,6 +37,38 @@ class Localidad{
         $mysqli->close();
         return $aLocalidades;
     }
+
+    public function obtenerTodos()
+    {
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $sql = "SELECT
+                    idlocalidad,
+                    nombre,
+                    cod_postal,
+                    fk_idprovincia
+                FROM localidades";
+        if (!$resultado = $mysqli->query($sql)) {
+            printf("Error en query: %s\n", $mysqli->error . " " . $sql);
+        }
+
+        $resultado =  $mysqli->query($sql);
+        if ($resultado) {
+            //Convierte el resultado en un array asociativo
+
+            while ($fila = $resultado->fetch_assoc()) {
+                $entidadAux = new Localidad();
+                $entidadAux->idlocalidad = $fila["idlocalidad"];
+                $entidadAux->nombre = $fila["nombre"];
+                $entidadAux->cod_postal = $fila["cod_postal"];
+                $entidadAux->fk_idprovincia = $fila["fk_idprovincia"];
+                $aLocalidades[] = $entidadAux;
+            }
+            
+        }
+        return $aLocalidades;
+        $mysqli->close();
+        
+    }
     
 
 }
