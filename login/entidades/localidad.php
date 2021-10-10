@@ -24,7 +24,7 @@ class Localidad{
             cod_postal
             FROM localidades 
             WHERE fk_idprovincia = $idProvincia
-            ORDER BY idlocalidad DESC";
+            ORDER BY idlocalidad ASC";
         $resultado = $mysqli->query($sql);
 
         while ($fila = $resultado->fetch_assoc()) {

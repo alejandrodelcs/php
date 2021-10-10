@@ -1,0 +1,28 @@
+#index{
+    padding-top: 50px;
+    padding-bottom: 0px;
+    background-color: #274b69;
+    color : white;
+    font-family: 'Martel Sans', sans-serif;
+}
+
+#index .form-group  {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.dropdown-toggle{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2;
+    border-radius: .35rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.img-thumbnail{
+	width: 150px;
+}

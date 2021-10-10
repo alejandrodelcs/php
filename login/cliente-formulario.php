@@ -31,6 +31,15 @@ if ($_POST) {
     }
 }
 
+if(isset($_GET["do"]) && $_GET["do"] == "buscarLocalidad" && $_GET["id"] && $_GET["id"] > 0){
+    $idProvincia = $_REQUEST["id"];
+    $localidad = new Localidad();
+    $aLocalidad = $localidad->obtenerPorProvincia($idProvincia);
+    echo json_encode($aLocalidad);
+    exit;
+}
+
+
 if (isset($_GET["id"]) && $_GET["id"] > 0) {
     $cliente->obtenerPorId();
 }
@@ -121,7 +130,7 @@ include_once("header.php");
                 <div class="row panel-body p-3">
                     <div class="col-6 form-group">
                         <label for="lstProvincia">Provincia:</label>
-                        <select class="form-control" name="lstProvincia" id="lstProvincia">
+                        <select class="form-control" name="lstProvincia" id="lstProvincia" onchange="fBuscarLocalidad()" required>
                             <option value="" disabled selected>Seleccionar</option>
                             <?php foreach ($aProvincias as $provincia) : ?>
                                 <option value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
@@ -171,11 +180,15 @@ include_once("header.php");
                         nombre,
                         idlocalidad
                     } = valor;
+                    //let nombre = valor.nombre;
+                    //let idlocalidad = valor.idlocalidad;
                     return acumulador + `<option value="${idlocalidad}">${nombre}</option>`;
                 }, opciones);
-                $("#lstLocalidad").empty().append(resultado);
+                $("#lstLocalidad").empty().append(resultado); //setea y asigna
             }
         });
     }
+
+
 </script>
 <?php include_once("footer.php"); ?>
