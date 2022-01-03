@@ -1,1 +1,1 @@
-[]
+[{"dni":"95170055","nombre":"Alejandro del Carpio Sanchez","telefono":"123456789","correo":"correo@correo.com","imagen":"20220103040121471296.jpg"}]
